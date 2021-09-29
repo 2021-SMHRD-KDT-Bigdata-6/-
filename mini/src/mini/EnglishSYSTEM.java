@@ -6,11 +6,11 @@ public class EnglishSYSTEM {
 
 
 		
+//		System.out.println("test");
 		
 		
 		
-		
-		
+		// syo------------------------------
 		
 
 	}

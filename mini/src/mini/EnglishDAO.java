@@ -38,7 +38,7 @@ public class EnglishDAO {
 		}
 		//------------------------------------------------------------
 		
-//<<<<<<< HEAD
+
 		private void close() {
 			try {
 				if(rs !=null) {
