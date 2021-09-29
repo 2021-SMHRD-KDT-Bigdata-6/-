@@ -37,6 +37,7 @@ public class EnglishDAO {
 		}
 		//------------------------------------------------------------
 		
+//<<<<<<< HEAD
 		private void close() {
 			try {
 				if(rs !=null) {
@@ -52,7 +53,6 @@ public class EnglishDAO {
 				e.printStackTrace();
 			}
 		}
-		
 }
 		
 		
