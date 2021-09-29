@@ -9,7 +9,7 @@ public class EnglishVO {
 	private String answer;
 	private String word;
 	
-	
+	//commit
 
 	@Override
 	public String toString() {
