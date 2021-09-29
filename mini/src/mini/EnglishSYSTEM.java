@@ -199,7 +199,11 @@ public class EnglishSYSTEM {
 							
 				} else if (select == 3) {
 					System.out.println("오답노트");
-					
+					ArrayList<EnglishVO> list2 = dao.selectAll();
+					//list가 이미 있어서 list2로 명명
+					for(int i =0; i<list2.size();i++) {
+						System.out.println(list.get(i));
+					}
 										
 						
 					
