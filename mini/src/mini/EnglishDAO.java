@@ -8,6 +8,10 @@ public class EnglishDAO {
 		//gi
 		System.out.println("hi");
 
+		//보여요
+		
+				System.out.println("보입니다");
+
 	}
 
 }
