@@ -13,7 +13,7 @@ public class EnglishDAO {
 	private ResultSet rs;
 
 	
-		//--------------------------------------------------------
+		//-------------------------------------------------------
 		private void getConn() {
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
