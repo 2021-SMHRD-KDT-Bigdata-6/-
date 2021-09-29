@@ -14,6 +14,7 @@ public class EnglishDAO {
 
 	
 		//-------------------------------------------------------
+	// Å×½ºÆ®
 		private void getConn() {
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
