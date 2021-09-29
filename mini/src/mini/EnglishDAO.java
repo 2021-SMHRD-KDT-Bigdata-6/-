@@ -14,7 +14,7 @@ public class EnglishDAO {
 
 	
 		//-------------------------------------------------------
-	// 테스트 //테스트 //테스트으으으~~~~~//되라되라되랏
+	// 테스트 //테스트 //테스트으으으~~~~~//되라되라되랏//ㅠㅜ
 		private void getConn() {
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
