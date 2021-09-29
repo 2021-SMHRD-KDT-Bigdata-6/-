@@ -9,7 +9,6 @@ public class EnglishVO {
 	private String answer;
 	private String word;
 	
-
 	
 
 	@Override
