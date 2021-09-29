@@ -10,7 +10,7 @@ public class EnglishDAO {
 
 		//보여요
 		
-				System.out.println("다시 수정합니다");
+				System.out.println("2트 수정 수정합니다");
 
 	}
 
