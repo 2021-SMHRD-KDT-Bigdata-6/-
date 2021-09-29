@@ -4,12 +4,13 @@ public class EnglishVO {
 	private String id;
 	private String pw;
 	private String name;
-	private String score;	
+	private String point;	
 	private int no;
 	private String answer;
 	private String word;
 	
-	//commit
+
+	
 
 	@Override
 	public String toString() {
@@ -18,9 +19,9 @@ public class EnglishVO {
 	
 	
 
-	public EnglishVO(String name, String score) {		
+	public EnglishVO(String name, String point) {		
 		this.name = name;
-		this.score = score;
+		this.point = point;
 	}
 
 
@@ -29,11 +30,11 @@ public class EnglishVO {
 		
 	}
 
-	public EnglishVO(String id, String pw, String name,String score) {
+	public EnglishVO(String id, String pw, String name,String point) {
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
-		this.score=score;
+		this. point= point;
 	}
 		
 	public EnglishVO() {
@@ -78,14 +79,14 @@ public class EnglishVO {
 
 
 
-	public String getScore() {
-		return score;
+	public String getPoint() {
+		return  point;
 	}
 
 
 
-	public void setScore(String score) {
-		this.score = score;
+	public void setScore(String  point) {
+		this. point =  point;
 	}
 
 
@@ -124,7 +125,19 @@ public class EnglishVO {
 		this.word = word;
 	}
 
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 }
