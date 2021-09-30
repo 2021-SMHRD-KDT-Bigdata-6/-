@@ -1,4 +1,4 @@
-package mm;
+package English;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,7 +18,7 @@ public class EnglishDAO {
 	
 	
 	
-	//-------------------------------------------------------
+	//--------------------------------------------------------
 	private void getConn() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");						
@@ -57,11 +57,12 @@ public class EnglishDAO {
 		getConn();
 		
 		try {
-			String sql="insert into PROFILE values(?,?,?)";
+			String sql="insert into PROFILE values(?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1,vo.getId());
 			psmt.setString(2,vo.getPw());
-			psmt.setString(3,vo.getName());								
+			psmt.setString(3,vo.getName());					
+			psmt.setLong(4,vo.getPoint());
 			cnt = psmt.executeUpdate();						
 		} catch (SQLException e) {			
 			e.printStackTrace();
@@ -87,7 +88,7 @@ public class EnglishDAO {
 				String id=rs.getString(1);
 				String pw=rs.getString(2);
 				String name=rs.getString(3);				
-				info =new ProfileVO(id, pw,  name);			
+				info =new ProfileVO(id, pw,  name,0);			
 			}					
 		} catch (SQLException e) {			
 			e.printStackTrace();
@@ -99,14 +100,16 @@ public class EnglishDAO {
 	}	
 
 	// --------------------- 랭킹 포인트 넘기기 -------------------------
-	public int RankPoint(RankVO vo) {
+	public int RankPoint(ProfileVO vo) {
 		int cnt=0;	
 		try {
 			getConn();			
-			String sql="insert into rank values(?,?)";
+//			String sql="insert into rank values(?,?)";
+			String sql="update profile set point=point+? where name=?";
 			psmt = conn.prepareStatement(sql);			
-			psmt.setString(1,vo.getName());
-			psmt.setLong(2,vo.getPoint());
+//			psmt.setString(1,vo.getName());
+			psmt.setLong(1,vo.getPoint());
+			psmt.setString(2,vo.getName());
 			cnt = psmt.executeUpdate(); 			
 		} 
 		catch (SQLException e) {			
@@ -209,7 +212,7 @@ public class EnglishDAO {
 		ArrayList<RankVO> list=new ArrayList<RankVO>();	
 		getConn();				
 		try {
-			String sql="select * from rank order by point desc";
+			String sql="select name,point from profile order by point desc";
 			psmt = conn.prepareStatement(sql);						
 			rs = psmt.executeQuery();
 			while(rs.next()) {
@@ -231,8 +234,10 @@ public class EnglishDAO {
 		ArrayList<NoteVO> list=new ArrayList<NoteVO>();	
 		getConn();				
 		try {
-			String sql="select * from note order by wrong_word asc ";
-			psmt = conn.prepareStatement(sql);						
+			String sql="select * from note  order by wrong_word asc ";
+			
+			psmt = conn.prepareStatement(sql);
+//			psmt.setString(1,vo.getId());
 			rs = psmt.executeQuery(sql);			
 			while(rs.next()) {
 				String word=rs.getString(1);
