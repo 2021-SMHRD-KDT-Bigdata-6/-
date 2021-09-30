@@ -16,7 +16,7 @@ public class wordVO {
 	
 	
 
-	public wordVO(String answer, String word) {
+	public wordVO(String word, String answer) {
 		
 		this.answer = answer;
 		this.word = word;
