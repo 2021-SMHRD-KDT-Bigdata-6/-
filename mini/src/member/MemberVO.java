@@ -22,8 +22,7 @@ public class MemberVO {
 		this.nick = nick;
 		this.phone = phone;
 	}
-	
-	
+		
 	
 	public MemberVO(String id, String pw) {
 		this.id = id;

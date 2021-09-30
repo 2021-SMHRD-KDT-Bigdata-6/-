@@ -18,7 +18,7 @@ public class MemberDAO {
 	private ResultSet rs=null;
 	
 	
-// -------- 중복 -- 드라이버 로딩   커넥션 연결 을  메소드로 묶는다 ---------	
+// -------- 중복 -- 드라이버 로딩   커넥션 연결 을  메소드로 묶는다 -------
 	private void getConn() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
