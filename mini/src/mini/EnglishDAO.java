@@ -9,25 +9,21 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-
-
-
-
 public class EnglishDAO {
 	
 	private Random ran=new Random();
 	private Connection conn;
 	private PreparedStatement psmt;
 	private ResultSet rs;
-	EnglishVO vo=null;
+	profileVO vo=null;
 	
 	
 
 	//--------------------------------------------------------
 	private void getConn() {
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-						
+			Class.forName("oracle.jdbc.driver.OracleDriver"); //여기부분에서 오류가 났는데
+			
 			String db_url ="jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 
 			                                  			
@@ -70,7 +66,7 @@ public class EnglishDAO {
 	
 	//-------------------- 회원 가입 --------------------------------------
 	
-	public int join(EnglishVO vo) {
+	public int join(profileVO vo) {
 		int cnt=0;
 		
 		getConn();
@@ -101,11 +97,11 @@ public class EnglishDAO {
 	
 //   ----------------------  로 그 인 ----------------------
 
-	public EnglishVO login(EnglishVO vo) {
+	public profileVO login(profileVO vo) {
 		
 		getConn();
 		
-		EnglishVO info=null;
+		profileVO info=null;
 		
 		
 		try {
@@ -122,7 +118,7 @@ public class EnglishDAO {
 				String name=rs.getString(3);
 				
 				
-				info =new EnglishVO(id, pw,  name,null);
+				info =new profileVO(id, pw,  name);
 			
 			}
 					
@@ -141,7 +137,7 @@ public class EnglishDAO {
 	
 
 	// --------------------- 랭킹 포인트 넘기기 -------------------------
-	public int RankPoint(EnglishVO vo) {
+	public int RankPoint(rankVO vo) {
 		int cnt=0;
 		
 		
@@ -172,7 +168,7 @@ public class EnglishDAO {
 	}
 
 	// ------------------------------- 틀린단어 넘기기 --------------------
-	public int wrong(EnglishVO vo) {
+	public int wrong(wordVO vo) {
 		int cnt=0;
 		
 		
@@ -181,7 +177,9 @@ public class EnglishDAO {
 			
 			String sql="update wrong_word set wrong_word=? where answer=?";
 			psmt = conn.prepareStatement(sql);			
-			psmt.setString(1,vo.getPoint());
+			psmt.setString(1,vo.getWord());
+			psmt.setString(2,vo.getAnswer());
+			
 			cnt = psmt.executeUpdate(); 
 			
 			
@@ -215,9 +213,9 @@ public class EnglishDAO {
 	
 	//------------- 쉬움 ----------------------------
 	
-	public ArrayList<EnglishVO> easyword() {
+	public ArrayList<wordVO> easyword() {
 		
-		ArrayList<EnglishVO> list =new ArrayList<EnglishVO>();
+		ArrayList<wordVO> list =new ArrayList<wordVO>();
 		getConn();
 				
 		try {
@@ -230,10 +228,8 @@ public class EnglishDAO {
 				String word=rs.getString(1);
 				String answer=rs.getString(2);
 				
-				EnglishVO vo=new EnglishVO(word);
-				EnglishVO vo1=new EnglishVO(answer);
+				wordVO vo = new wordVO(word,answer);
 				list.add(vo);
-				list.add(vo1);
 				
 			}
 			
@@ -257,9 +253,9 @@ public class EnglishDAO {
 	
 	 //---------------------------보통 -------------------------------
 
-	public ArrayList<EnglishVO> nomalword() {
+	public ArrayList<wordVO> nomalword() {
 		
-		ArrayList<EnglishVO> list =new ArrayList<EnglishVO>();
+		ArrayList<wordVO> list =new ArrayList<wordVO>();
 		getConn();
 		
 		
@@ -276,8 +272,8 @@ public class EnglishDAO {
 				String word=rs.getString(1);
 				String answer=rs.getString(2);
 				
-				EnglishVO vo=new EnglishVO(word);
-				EnglishVO vo1=new EnglishVO(answer);
+				wordVO vo=new wordVO(word);
+				wordVO vo1=new wordVO(answer);
 				list.add(vo);
 				list.add(vo1);
 				
@@ -307,9 +303,9 @@ public class EnglishDAO {
 	
 	// -------------------- 어려움 --------------------------
 
-	public ArrayList<EnglishVO> hardword() {
+	public ArrayList<wordVO> hardword() {
 		
-		ArrayList<EnglishVO> list =new ArrayList<EnglishVO>();
+		ArrayList<wordVO> list =new ArrayList<wordVO>();
 		getConn();
 		
 		
@@ -326,8 +322,8 @@ public class EnglishDAO {
 				String word=rs.getString(1);
 				String answer=rs.getString(2);
 				
-				EnglishVO vo=new EnglishVO(word);
-				EnglishVO vo1=new EnglishVO(answer);
+				wordVO vo=new wordVO(word);
+				wordVO vo1=new wordVO(answer);
 				list.add(vo);
 				list.add(vo1);
 				
@@ -363,9 +359,9 @@ public class EnglishDAO {
 	
 	// ------------------랭킹 ----------------------------------
 		
-	public ArrayList<EnglishVO> rank() {
+	public ArrayList<rankVO> rank() {
 		
-		ArrayList<EnglishVO> list=new ArrayList<EnglishVO>();	
+		ArrayList<rankVO> list=new ArrayList<rankVO>();	
 		getConn();
 				
 		try {
@@ -377,10 +373,10 @@ public class EnglishDAO {
 				String name=rs.getString(1);
 				String point=rs.getString(2);
 				
-				EnglishVO vo=new EnglishVO(name);
-				EnglishVO vo1=new EnglishVO(point);
+				rankVO vo=new rankVO(name, point);
+				
 				list.add(vo);
-				list.add(vo1);
+				
 				
 				
 			}
@@ -403,9 +399,9 @@ public class EnglishDAO {
 
 	//-----------------오답노트 -------------------------
 	
-	public ArrayList<EnglishVO> note() {
+	public ArrayList<noteVO> note() {
 		
-		ArrayList<EnglishVO> list=new ArrayList<EnglishVO>();	
+		ArrayList<noteVO> list=new ArrayList<noteVO>();	
 		getConn();
 				
 		try {
@@ -417,10 +413,9 @@ public class EnglishDAO {
 				String worng_word=rs.getString(1);
 				String answer=rs.getString(3);
 				
-				EnglishVO vo=new EnglishVO(worng_word);
-				EnglishVO vo1=new EnglishVO(answer);
+				noteVO vo=new noteVO(worng_word, answer);				
 				list.add(vo);
-				list.add(vo1);
+				
 				
 				
 			}

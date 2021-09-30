@@ -32,7 +32,7 @@ public class EnglishSYSTEM {
 				System.out.print("NAME 입력 : ");
 				String name = sc.next();
 
-				EnglishVO vo = new EnglishVO(id, pw, name, null);
+				profileVO vo = new profileVO(id, pw, name);
 
 				int cnt = dao.join(vo);
 
@@ -51,8 +51,8 @@ public class EnglishSYSTEM {
 				System.out.print("PW 입력 : ");
 				String pw = sc.next();
 
-				EnglishVO vo = new EnglishVO(id, pw, null, null);
-				EnglishVO info = dao.login(vo);
+				profileVO vo = new profileVO(id, pw);
+				profileVO info = dao.login(vo);
 
 				if (info != null) {
 					System.out.println("로그인 성공!");
@@ -77,32 +77,26 @@ public class EnglishSYSTEM {
 						
 						
 
-						ArrayList<EnglishVO> list = dao.easyword();
+						ArrayList<wordVO> list = dao.easyword();
+						String wrong_word;
+						String answer;
 
 					for (int i = 2; i < 22; i++) {
-						if (i % 2 == 0) { // 영단어
 						System.out.print(list.get(i) + " >> ");
-					}
-						
-						
-					else if (i % 2 != 0) { // 한글
-//						String res=list.get(i);
+						wrong_word = list.get(i).getWord();
 						result = sc.next();
-//						if (list.get(i) == result) {
-							System.out.print(list.get(i));							
-							result = sc.next();
-							
+						System.out.print(list.get(i));							
+						result = sc.next();
+						answer = list.get(i).getAnswer();
+						System.out.println(answer);
 							//point++;
-							
-							
-							
-							
-							
-							
 							
 						}	
 								
-					}
+					
+//					if(result != answer) {
+//						
+//					}
 
 								
 					
@@ -114,9 +108,10 @@ public class EnglishSYSTEM {
 						System.out.println("정답을 정확히 입력하세요");
 
 
-						ArrayList<EnglishVO> list = dao.nomalword();
+						ArrayList<wordVO> list = dao.nomalword();
 						
-						for (int i = 0; i < 20; i++) {
+						
+						for (int i = 0; i < list.size(); i++) {
 							if(i%2==0) {
 							System.out.print(list.get(i) + " >> ");
 							
@@ -139,9 +134,9 @@ public class EnglishSYSTEM {
 						System.out.println("정답을 정확히 입력하세요");
 						
 
-						ArrayList<EnglishVO> list = dao.hardword();
+						ArrayList<wordVO> list = dao.hardword();
 
-						for (int i = 0; i < 20; i++) {
+						for (int i = 0; i < list.size(); i++) {
 							if(i%2==0) {
 							System.out.print(list.get(i) + " >> ");
 							
@@ -161,10 +156,10 @@ public class EnglishSYSTEM {
 				} else if (select == 2) {
 					System.out.println("====랭킹확인====");
 
-					ArrayList<EnglishVO> list = dao.rank();
+					ArrayList<rankVO> list = dao.rank();
 					int count=1;
 
-					for (int i = 0; i < 6; i++) {
+					for (int i = 0; i < list.size(); i++) {
 						if(i%2==0) {
 						
 						System.out.print(count+"등\t"+list.get(i)+"\t");
@@ -186,9 +181,9 @@ public class EnglishSYSTEM {
 				} else if (select == 3) {
 					System.out.println("====오답노트====");
 
-					ArrayList<EnglishVO> list = dao.note();
+					ArrayList<noteVO> list = dao.note();
 					
-					for (int i = 0; i < 6; i++) {
+					for (int i = 0; i < list.size(); i++) {
 						if(i%2==0) {
 						
 						System.out.print(list.get(i)+"\t");
