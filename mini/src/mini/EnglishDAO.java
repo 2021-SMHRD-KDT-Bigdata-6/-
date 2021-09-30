@@ -9,10 +9,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-
-
-
-
 public class EnglishDAO {
 	
 	private Random ran=new Random();
