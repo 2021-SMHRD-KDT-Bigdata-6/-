@@ -12,7 +12,7 @@ public class EnglishSYSTEM {
 		String result = null;
 		EnglishDAO dao = new EnglishDAO();
 		String name=null;
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------
 		System.out.println("영어 단어 맞추기 게임을 실행합니다 ^^");
 
 		while (true) {
