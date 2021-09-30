@@ -118,7 +118,7 @@ public class EnglishDAO {
 				String name=rs.getString(3);
 				
 				
-				info =new profileVO(id, pw,  name);
+				info =new profileVO(id, pw, name);
 			
 			}
 					
@@ -370,12 +370,14 @@ public class EnglishDAO {
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
+				
 				String name=rs.getString(1);
 				String point=rs.getString(2);
 				
 				rankVO vo=new rankVO(name, point);
+				list.add(new rankVO(name,point)); //vo에 이름, 포인트가 한번에 저장되게 수정
 				
-				list.add(vo);
+//				list.add(vo);
 				
 				
 				
@@ -413,7 +415,7 @@ public class EnglishDAO {
 				String worng_word=rs.getString(1);
 				String answer=rs.getString(3);
 				
-				noteVO vo=new noteVO(worng_word, answer);				
+				noteVO vo=new noteVO(worng_word, answer);
 				list.add(vo);
 				
 				
