@@ -28,6 +28,11 @@ public class noteVO {
 		this.id = id;
 		this.answer = answer;
 	}
+	public noteVO(String wrong_word, String answer) {
+		
+		this.wrong_word = wrong_word;
+		this.answer = answer;
+	}
 	
 	
 	

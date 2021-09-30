@@ -49,6 +49,12 @@ public class profileVO {
 	}
 
 
+
+	public profileVO(String id, String pw) {
+		
+	}
+
+
 	
 
 	

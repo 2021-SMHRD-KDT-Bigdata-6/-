@@ -13,6 +13,16 @@ public class wordVO {
 		this.answer = answer;
 		this.word = word;
 	}
+	
+	
+
+	public wordVO(String answer, String word) {
+		
+		this.answer = answer;
+		this.word = word;
+	}
+
+
 
 	@Override
 	public String toString() {
@@ -25,6 +35,8 @@ public class wordVO {
 	}
 	
 	
+	
+
 	public int getNo() {
 		return no;
 	}
