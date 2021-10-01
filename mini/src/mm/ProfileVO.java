@@ -7,9 +7,17 @@ public class ProfileVO {
 	private int point;
 	
 	
+	
+	
+	public ProfileVO(String id, String name, int point) {
+		
+		this.id = id;
+		this.name = name;
+		this.point = point;
+	}
 	@Override
 	public String toString() {
-		return "ProfileVO [id=" + id + ", pw=" + pw + ", name=" + name + ", point=" + point + "]";
+		return " [id=" + id + ", name=" + name + ", point=" + point + "]";
 	}
 	public ProfileVO(String name) {
 		this.name=name;

@@ -208,7 +208,7 @@ public class EnglishSystem {
 				}
 //	     --------------------È¸¿ø Å»Åð -------------------------------------------
 			}else if(choice ==4) {
-				System.out.print("È¸¿ø µrÅð");
+				System.out.print("È¸¿ø Å»Åð");
 				System.out.println("ID ÀÔ·Â : ");
 				String id=sc.next();
 				System.out.print("PW ÀÔ·Â : ");
@@ -219,6 +219,12 @@ public class EnglishSystem {
 				
 				int dnt=dao.delete1(vo);										
 				int ent=dao.delete2(vo1);
+				
+				if (ent > 0) {
+					System.out.println("È¸¿øÅ»Åð ¼º°ø!");
+				} else {
+					System.out.println("È¸¿øÅ» ½ÇÆÐ.../");
+				}
 				}
 //       ------------------Á¾·á ---------------------------------------
 			else if (choice == 5) {

@@ -307,11 +307,10 @@ public class EnglishDAO {
 				
 				rs=psmt.executeQuery();					
 				while(rs.next()) {
-					String id=rs.getString(1);
-					String pw=rs.getString(2);
+					String id=rs.getString(1);					
 					String name=rs.getString(3);
 					int point=rs.getInt(4);					
-					ProfileVO vo=new ProfileVO(id, pw, name, point);
+					ProfileVO vo=new ProfileVO(id, name, point);
 					list.add(vo);				
 				}								
 			} 	
