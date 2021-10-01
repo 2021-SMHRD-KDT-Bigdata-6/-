@@ -7,6 +7,10 @@ public class ProfileVO {
 	private int point;
 	
 	
+	@Override
+	public String toString() {
+		return "ProfileVO [id=" + id + ", pw=" + pw + ", name=" + name + ", point=" + point + "]";
+	}
 	public ProfileVO(String name) {
 		this.name=name;
 	}
